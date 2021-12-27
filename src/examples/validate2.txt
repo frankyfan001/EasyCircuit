@@ -1,0 +1,37 @@
+
+if 0 {
+    INPUT in1;
+    draw in1;
+} else {
+    INPUT in1;
+    INPUT in2;
+    OUTPUT out1;
+
+    AND and1;
+    AND and2;
+    OR or;
+    INPUT in3;
+
+    CIRCUIT and_gate {
+        in1 -> and1;
+        in2 -> and1;
+        and1 -> out1;
+    }
+    CIRCUIT and_gate2 {
+        in1 -> and2;
+        and_gate -> and2;
+        and2 -> out1;
+    }
+    CIRCUIT combine {
+
+
+        and_gate2 => or;
+        and_gate2 => or;
+        or => out1;
+    }
+
+
+
+
+    draw combine;
+}

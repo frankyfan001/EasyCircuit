@@ -1,0 +1,83 @@
+INPUT in1;
+INPUT in2;
+OUTPUT out;
+AND and;
+OR or;
+XOR xor;
+
+CIRCUIT and_gate {
+    in1 -> and;
+    in2 -> and;
+    and -> out;
+}
+
+CIRCUIT or_gate {
+    in1 -> or;
+    in2 -> or;
+    or -> out;
+}
+
+CIRCUIT xor_gate {
+    in1 -> xor;
+    in2 -> xor;
+    xor -> out;
+}
+
+CIRCUIT c1 {
+    and_gate -> and;
+    or_gate -> and;
+    and -> out;
+}
+
+CIRCUIT c2 {
+    xor_gate -> or;
+    xor_gate -> or;
+    or -> out;
+}
+
+CIRCUIT c3 {
+    c1 -> xor;
+    c2 -> xor;
+    xor -> out;
+}
+
+draw and_gate;
+draw or_gate;
+draw xor_gate;
+draw c1;
+draw c2;
+draw c3;
+
+output and_gate(1, 1);
+output or_gate(1, 1);
+output xor_gate(1, 1);
+output c1(1, 1, 1, 1);
+output c2(1, 1, 1, 1);
+output c3(1, 1, 1, 1, 1, 1, 1, 1);
+
+if 0 {
+    if 1 {
+        output c1(1, 1, 1, 1);
+    }
+    if 0 {
+        output c1(1, 1, 1, 1);
+    }
+} else {
+    if c1(1, 0, 1, 1) {
+        output c1(1, 1, 1, 1);
+    } else {
+        output c1(1, 1, 1, 1);
+    }
+}
+
+loop [a1, a2, a3, a4] {
+    if c1(a1, a2, a3, a4) {
+        output c1(a1, a2, a3, a4);
+    }
+
+    loop [b1] {
+        if and_gate(b1, b1) {
+            output and_gate(b1, b1);
+        }
+    }
+}

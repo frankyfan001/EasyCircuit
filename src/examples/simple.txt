@@ -1,0 +1,35 @@
+CIRCUIT c1 {
+    INPUT a;
+    INPUT b;
+    AND a1;
+    OUTPUT o1;
+
+    a => a1;
+    b => a1;
+    a1 => o1;
+}
+
+CIRCUIT c3 {
+
+    CIRCUIT c2 {
+        INPUT c;
+        INPUT d;
+        AND a2;
+        OUTPUT o2;
+
+        c => a2;
+        d => a2;
+        a2 => o2;
+    }
+
+    OR or1;
+    OUTPUT o3;
+
+    c1 => or1;
+    c2 => or1;
+    or1 => o3;
+}
+
+draw c1;
+draw c2;
+draw c3;

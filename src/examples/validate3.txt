@@ -1,0 +1,25 @@
+INPUT in1;
+INPUT in2;
+OUTPUT out;
+AND and;
+OR or;
+
+CIRCUIT and_gate {
+    in1 -> and;
+    in2 -> and;
+    and -> out;
+}
+
+CIRCUIT or_gate {
+    in1 -> or;
+    in2 -> or;
+    or -> out;
+}
+
+CIRCUIT c1 {
+    and_gate -> and;
+    and_gate -> and;
+    and -> out;
+}
+
+draw c1;

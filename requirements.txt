@@ -1,0 +1,5 @@
+schemdraw == 0.10
+antlr4-python3-runtime == 4.9.2
+pyparsing==2.2.0
+toposort==1.7
+

@@ -1,0 +1,34 @@
+INPUT in1;
+INPUT in2;
+OUTPUT out;
+AND and;
+OR or;
+XOR xor;
+
+CIRCUIT or_gate {
+    in1 -> or;
+    in2 -> or;
+    or -> out;
+}
+
+CIRCUIT xor_gate {
+    in1 -> xor;
+    in2 -> xor;
+    xor -> out;
+}
+
+CIRCUIT multiplexer {
+    or_gate -> and;
+    xor_gate -> and;
+    and -> out;
+}
+
+draw multiplexer;
+
+loop [a, b, c, d] {
+    if multiplexer(a, b, c, d) {
+        draw multiplexer(a, b, c, d);
+    } else {
+        output multiplexer(a, b, c, d);
+    }
+}

@@ -1,0 +1,11 @@
+digraph G1 {
+    node [style=filled]
+    validator -> ast[label="visit"];
+    graph_generator -> validated_ast[label="visit"];
+    validator -> validated_ast [label="output"]
+    graph_generator -> connect_graph [label="output"]
+    ast -> validator [label="accept"];
+    validated_ast -> graph_generator [label="accept"];
+    code_generator -> connect_graph [label="traversal"];
+    code_generator -> drawing_scheme [label="output"];
+}
